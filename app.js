@@ -1,10 +1,15 @@
 App.HelloW = function($) {
 	// private stuffs
+	var HelloWorldView = Backbone.View.extend({
+		render : function() {
+			$(this.el).html('Hello World!');
+		}
+	});
 	
 	// public stuffs
 	return {
 		start : function() {
-			console.log('Started');
+			new HelloWorldView().render();
 		}
 	}
 }(jQuery);
