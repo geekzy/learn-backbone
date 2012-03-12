@@ -1,15 +1,25 @@
-App.HelloW = function($) {
+App.HelloW = function($) {	
 	// private stuffs
 	var HelloWorldView = Backbone.View.extend({
-		render : function() {
-			$(this.el).html('Hello World!');
+		container : '#hello-world',		
+		initialize : function() {
+			this.bold = true;
+		},
+		render : function(text) {
+			var div = $(this.container);
+			$(this.el).html('Saying \'Hello World!\'').appendTo(div)
+				.css({'font-weight' : this.bold ? 'bold' : 'normal'});
 		}
 	});
 	
 	// public stuffs
 	return {
 		start : function() {
-			new HelloWorldView().render();
+			new HelloWorldView({				
+				tagName : 'span',
+				id : 'foo',
+				className : 'title',
+			}).render();
 		}
 	}
 }(jQuery);
