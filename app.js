@@ -2,11 +2,12 @@ App.HelloW = function($) {
 	// private stuffs
 	var HelloWorldView = Backbone.View.extend({
 		container : '#hello-world',		
-		initialize : function() {
-			this.bold = true;
+		initialize : function(params) {
+			this.name = params.name || '';
+			this.bold = params.bold || false;
 		},
 		render : function(text) {
-			var div = $(this.container);
+			var div = $(this.container);			
 			$(this.el).html('Saying \'Hello World!\'').appendTo(div)
 				.css({'font-weight' : this.bold ? 'bold' : 'normal'});
 		}
@@ -15,7 +16,8 @@ App.HelloW = function($) {
 	// public stuffs
 	return {
 		start : function() {
-			new HelloWorldView({				
+			new HelloWorldView({
+				name : 'GeekZy',
 				tagName : 'span',
 				id : 'foo',
 				className : 'title',
