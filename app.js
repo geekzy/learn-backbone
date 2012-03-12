@@ -1,13 +1,17 @@
 App.HelloW = function($) {	
 	// private stuffs
 	var HelloWorldView = Backbone.View.extend({
-		container : '#hello-world',		
-		initialize : function() {
-			this.bold = true;
+		el : '#hello-world',
+		events : {
+			'click #sayit' : 'render'
 		},
-		render : function(text) {
-			var div = $(this.container);
-			$(this.el).html('Saying \'Hello World!\'').appendTo(div)
+		
+		initialize : function(params) {
+			this.name = params.name || ''; // empty string by defualt
+			this.bold = params.bold || true; // bold by default
+		},
+		render : function() {			
+			$(this.el).html(this.name + ' is Saying \'Hello World!\'')
 				.css({'font-weight' : this.bold ? 'bold' : 'normal'});
 		}
 	});
@@ -15,11 +19,12 @@ App.HelloW = function($) {
 	// public stuffs
 	return {
 		start : function() {
-			new HelloWorldView({				
+			new HelloWorldView({
+				name : 'GeekZy',
 				tagName : 'span',
 				id : 'foo',
 				className : 'title',
-			}).render();
+			});
 		}
 	}
 }(jQuery);
