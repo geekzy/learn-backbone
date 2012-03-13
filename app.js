@@ -9,11 +9,14 @@ jQueryView = Backbone.View.extend({
 
 App.HelloW = function($) {	
 	// private stuffs
-	var HelloWorldView = jQueryView.extend({
+	var HelloWorldView;
+	
+	// Creating a Backbone.View that supports jQuery
+	HelloWorldView = jQueryView.extend({
 		el : '#hello-world',
 		tmpl : '#hello-world-tmpl',
 		events : {
-			'click #sayit' : 'render'
+			'click #btnSay' : 'render'
 		},
 		
 		initialize : function(params) {
@@ -21,9 +24,14 @@ App.HelloW = function($) {
 			jQueryView.prototype.initialize.call(this);
 			this.name = params.name || ''; // empty string by defualt
 			this.bold = params.bold || true; // bold by default
+			
+			// initializing a button
+			$.tmpl('<button id="btnSay">${text}</button>', {text : params.btn}).appendTo(this.el);
 		},
 		render : function() {	
 			var content = this.tmpl.tmpl({name : this.name});
+			
+			// manipulating view a.k.a rendering view
 			this.el.html(content)
 				.css({'font-weight' : this.bold ? 'bold' : 'normal'});
 		}
@@ -32,8 +40,10 @@ App.HelloW = function($) {
 	// public stuffs
 	return {
 		start : function() {
-			new HelloWorldView({
+			// instatiating a view
+			new HelloWorldView({				
 				name : 'GeekZy',
+				btn : 'Say it',
 				tagName : 'span',
 				id : 'foo',
 				className : 'title',

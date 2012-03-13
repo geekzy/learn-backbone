@@ -3,20 +3,30 @@
 <head>
 	<title>Welcome to Backbone.js</title>
 	<script type="text/javascript">if (typeof App === 'undefined') { App = {}; }</script>
-	<script type="text/javascript" src="/jquery/1.7/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="/underscorejs/underscore.js"></script>
-	<script type="text/javascript" src="/backbonejs/backbone.js"></script>
 	
+	<!-- jQuery Core -->
+	<script type="text/javascript" src="/jquery/1.7/jquery-1.7.1.min.js"></script>
+	<!-- jQuery Template Plugin -->
 	<script type="text/javascript" src="/jquery-plugin/jquery.tmpl.min.js"></script>
+	
+	<!-- Underscore JS -->
+	<script type="text/javascript" src="/underscorejs/underscore.js"></script>
+	
+	<!-- Backbone JS -->
+	<script type="text/javascript" src="/backbonejs/backbone.js"></script>
+		
+	<!-- Application Script -->
 	<script type="text/javascript" src="app.js"></script>
+	
+	<!-- custom styles -->
+	<style type="text/css"></style>
 </head>
 <body>
+	<!-- a jQuery Template -->
 	<script id="hello-world-tmpl" type="text/x-jquery-tmpl">
-		${name} is Saying Hello World
+		<p>${name} is Saying Hello World</p>
 	</script>
 	
-	<div id="hello-world">
-		<button id="sayit">Say It</button>
-	</div>
+	<div id="hello-world"></div>
 </body>
 </html>
