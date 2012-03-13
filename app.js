@@ -3,6 +3,7 @@
 jQueryView = Backbone.View.extend({
 	initialize : function() {
 		this.el = $(this.el);
+		this.tmpl = $(this.tmpl);
 	}
 });
 
@@ -10,6 +11,7 @@ App.HelloW = function($) {
 	// private stuffs
 	var HelloWorldView = jQueryView.extend({
 		el : '#hello-world',
+		tmpl : '#hello-world-tmpl',
 		events : {
 			'click #sayit' : 'render'
 		},
@@ -20,8 +22,9 @@ App.HelloW = function($) {
 			this.name = params.name || ''; // empty string by defualt
 			this.bold = params.bold || true; // bold by default
 		},
-		render : function() {			
-			this.el.html(this.name + ' is Saying \'Hello World!\'')
+		render : function() {	
+			var content = this.tmpl.tmpl({name : this.name});
+			this.el.html(content)
 				.css({'font-weight' : this.bold ? 'bold' : 'normal'});
 		}
 	});
